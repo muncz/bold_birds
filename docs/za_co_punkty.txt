@@ -1,0 +1,11 @@
+Grupa oceniaj¹ca szczególn¹ uwagê kaza³a zwróciæ na:
+1) Naturalny interface,
+- To komputer rozumie u¿ytkownika
+- Totalny brak instruukcji
+2) Sporo punktów ma byæ za prezentacjê, 
+- czyli jeœli zrobimy œredni¹ apkê, ale ³adnie j¹ zaprezentujemy to itak bêdzie dobrze
+- nie ukrywali, ¿e mo¿na zrobiæ funkcjonalnoœci widmo, o ile nie wyjdzie to w czasie podstawowych testów
+
+3) Technologia nie ma zanczenia, ma dzia³aæ
+
+4) Mentorzy powiedzieli, zê mog¹ lukn¹c w kod
