@@ -1,0 +1,23 @@
+* do rozpoznawania mowy uzywamy czegos takiego, co sie nazywa blather, ale troche przeze mnie zmodyfikowane (to opiera sie na sphinksie)
+* do syntezacji - zwyklego espeaka uniksowego - dziala OK, wiec z tym bym w ogole nie kombinowal
+
+
+Blather jest napisany w calosci w pythonie, wymaga od cholery dodatkowych bibliotek, ale grunt, ze to w ogole dziala i rozpoznaje faktycznie (niestety tylko angielski). Dziala to tak:
+
+Glowny folder z programem, po pierwszym uruchomieniu skryptu pythonowego, tworzy pliki command, command.info w ~/.config/blather
+Przy pierwszym uruchomieniu:
+
+
+1 trzeba wejsc na  http://www.speech.cs.cmu.edu/tools/lmtool.html, gdzie trzeba wrzucic plik sentences.corpus (z katalogu sciagnietego programu),
+2 to jest jakis serwis z czyms tam, nie wiem, ale chodzi o rozpoznawanie mowy, dziala
+3 stamtad sie sciaga dwa pliki z rozszerzeniami *.dic i *.lm, ktore trzeba skopiowac  do katalogu konfiguracyjnego blathera
+
+Polecenia sa konfigurowane w commands i command.info - w schemacie - JAKAS_WYPOWIEDZIANA KOMENDA: JAKIES_DZIALANIE (bash)
+
+Uruchomilem to wszystko, wszystko dziala itd., czasem ten blather lapie zwiechy, ale to kij, bo takie mini. 
+
+Kwestia jest tylko taka, zeby nie dosc, ze to ROZPOZNAWALO, co sie mowi i ODPOWIADALO, to jeszcze trzeba zrobic przekierowanie, gdzies, gdzie to bedzie wrzucane jako tekst. <- tu jest caly problem. Bo mozna skonfigurowac tak, ze po wydaniu komendy CHROME, odpali sie faktycznie chrome, ale jeszcze nie wiem jak to przekazac, gdziekolwiek.
+
+
+Tyle chcialem napisac, pozdrawiam :)
+
