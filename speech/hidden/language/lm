@@ -1,0 +1,70 @@
+Language model created by QuickLM on Wed May  7 12:18:02 EDT 2014
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 8 sentences and 14 words
+
+\data\
+ngram 1=14
+ngram 2=20
+ngram 3=13
+
+\1-grams:
+-0.8603 </s> -0.3010
+-0.8603 <s> -0.2366
+-1.7634 A -0.2935
+-1.7634 ARE -0.2858
+-1.7634 BLACK -0.2366
+-1.7634 BUY -0.2935
+-1.7634 CAR -0.2366
+-1.7634 FUCK -0.2858
+-1.7634 HELLO -0.2366
+-1.7634 HI -0.2366
+-1.7634 WHITE -0.2366
+-1.7634 WHO -0.2935
+-1.7634 YELLOW -0.2366
+-1.4624 YOU -0.2366
+
+\2-grams:
+-1.2041 <s> BLACK 0.0000
+-1.2041 <s> BUY 0.0000
+-1.2041 <s> FUCK 0.0000
+-1.2041 <s> HELLO 0.0000
+-1.2041 <s> HI 0.0000
+-1.2041 <s> WHITE 0.0000
+-1.2041 <s> WHO 0.0000
+-1.2041 <s> YELLOW 0.0000
+-0.3010 A CAR 0.0000
+-0.3010 ARE YOU 0.0000
+-0.3010 BLACK </s> -0.3010
+-0.3010 BUY A 0.0000
+-0.3010 CAR </s> -0.3010
+-0.3010 FUCK YOU 0.0000
+-0.3010 HELLO </s> -0.3010
+-0.3010 HI </s> -0.3010
+-0.3010 WHITE </s> -0.3010
+-0.3010 WHO ARE 0.0000
+-0.3010 YELLOW </s> -0.3010
+-0.3010 YOU </s> -0.3010
+
+\3-grams:
+-0.3010 <s> BLACK </s>
+-0.3010 <s> BUY A
+-0.3010 <s> FUCK YOU
+-0.3010 <s> HELLO </s>
+-0.3010 <s> HI </s>
+-0.3010 <s> WHITE </s>
+-0.3010 <s> WHO ARE
+-0.3010 <s> YELLOW </s>
+-0.3010 A CAR </s>
+-0.3010 ARE YOU </s>
+-0.3010 BUY A CAR
+-0.3010 FUCK YOU </s>
+-0.3010 WHO ARE YOU
+
+\end\
