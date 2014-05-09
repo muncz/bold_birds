@@ -1,8 +1,12 @@
 <html>
 <head>
     <title>Pico Example</title>
-    <script type="text/javascript" src="/pico/client.js"></script>
-    <script type="text/javascript">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">	</script>
+	<script type="text/javascript" src="/pico/client.js"></script>
+	<script>
+	
+	function rusz_sie_pytonie(){
         pico.load('recognize');
         pico.main = function() {
             var displayMessage = function(message){
@@ -10,9 +14,31 @@
            }
            recognize.recognize("Fergal", displayMessage);
         }
+	}
+	
+	  $(document).ready(function(){
+		$('#MyButton').click(function(){
+		var displayMessage
+		   recognize.recognize("Fergal", displayMessage);
+		});
+	  });
+	</script>
+
+
+	
+    
+    <script type="text/javascript">
+        pico.load('recognize');
+        pico.main = function() {
+            var displayMessage = function(message){
+               document.getElementById('message').innerHTML = message;
+           } 
+           //recognize.recognize("Fergal", displayMessage);
+        }
     </script>
 </head>
 <body>
         <div id="message"></div>
+		<input type="button" value="Capacity Chart" id="MyButton" >
 </body>
 </html>
