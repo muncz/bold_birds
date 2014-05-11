@@ -8,13 +8,16 @@
 	
 	<script type="text/JavaScript">
 	
-
+	function update_results(){
+	
+	}
 	
 	
 	var displayMessage ;
+	var last_command ;
 	
-	var MaxPrice ;
-	var MinPrice ;
+	var MaxPrice = 100000;
+	var MinPrice = 5000;
 	
 	pico.load('get_from_ebay');
 	pico.main = function() 
@@ -22,8 +25,10 @@
 		displayMessage = function(research_output)
 		{
 			document.getElementById("search_output").innerHTML = research_output;
+			
 			var ebay_results = research_output;
 			var items_found = Object.keys(ebay_results).length;
+			console.dir(items_found);
 			
 			document.getElementById('search_result').innerHTML = '';
 			
@@ -41,28 +46,60 @@
 				document.getElementById('search_result').innerHTML += item_name + '</br>';
 				document.getElementById('search_result').innerHTML += item_price +  '  GBP </br>';
 				//document.getElementById('search_result').innerHTML += item_link + '</br>';
-				document.getElementById('search_result').innerHTML += '<a href="'+item_link+'" target="_blank"><img src="'+item_picture+'" width="400"  alt="" title="" /></a>';
+				document.getElementById('search_result').innerHTML += '<a href="'+item_link+'" target="_blank"><img src="'+ item_picture +'" width="400"  alt="" title="" /></a>';
 				
 				document.getElementById('search_result').innerHTML += '</div>'
 			}
 			
 			
 		} 
+		
+		
+		last_command = function(output)
+		{ 
+			document.getElementById("div_command").innerHTML = output;
+		}
 	}
 	
 	
-	$(document).ready(function(){
+	$(document).ready(function()
+	{
 	  
-		document.getElementById('search_result').innerHTML = "Serching not started yet";
+	document.getElementById('search_result').innerHTML = "Serching not started yet";
+			
+	var div = document.getElementById("search_output");
+	div.textContent = "Press button to start voice control";
+	
+	var div_command = document.getElementById("div_command");
+	div_command.textContent = "Last command";
 		
-		var div = document.getElementById("search_output");
-		div.textContent = "Press button to start voice control";
+	$('#MyButton').click(function()
+	{
+	div.textContent = "Connecting.. to the server...";
+	get_from_ebay.show_results( MinPrice ,MaxPrice, displayMessage );
+	});
 		
+	$('#ReadButton').click(function()
+	{
+	div.textContent = "Connecting to the server...";
+	get_from_ebay.read_first(last_command);
+	});
+	
+	$('#ToExpensive').click(function()
+	{
+	div.textContent = "Looking for the cheeper cars...";
+	//var NewMin = MinPrice*0.8;
+	var NewMax = MaxPrice*0.8;
+	if ( (NewMax - MinPrice) > 10 )
+	{
+	MaxPrice = NewMax;
+	get_from_ebay.show_results( MinPrice ,MaxPrice, displayMessage );
+	}
+	else {	div.textContent = "There are no cheeper cars for you..."; }
+	
+	
+	});
 		
-	$('#MyButton').click(function(){
-		div.textContent = "Connecting to the server...";
-		get_from_ebay.show_results( displayMessage);
-		});
 		
 	
 	});
@@ -74,7 +111,11 @@
 
 <body>
         <div id="search_output"></div>
+		<div id="div_command"></div>
 		<input type="button" value="Search" id="MyButton" >
+		<input type="button" value="Read_last_command" id="ReadButton" >
+		<input type="button" value="ToExpensive" id="ToExpensive" >
+		<input type="button" value="Cheaper" id="ToExpensive" >
 		<div id="search_result"></div>
 
 
