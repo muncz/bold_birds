@@ -1,39 +1,81 @@
 <html>
 <head>
-    <title>Pico Example</title>
+    <title>Mefisto Search Engine</title>
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">	</script>
 	<script type="text/JavaScript" src="/pico/client.js"> </script>
+	
 	<script type="text/JavaScript">
-		var displayMessage ;
-		pico.load('recognize');
-		pico.main = function() 
-		{
-            displayMessage = function(research_output)
-			{
-                document.getElementById("search_output").innerHTML = research_output;
-            } 
-        }
+	
 
-	  $(document).ready(function(){
+	
+	
+	var displayMessage ;
+	
+	var MaxPrice ;
+	var MinPrice ;
+	
+	pico.load('get_from_ebay');
+	pico.main = function() 
+	{
+		displayMessage = function(research_output)
+		{
+			document.getElementById("search_output").innerHTML = research_output;
+			var ebay_results = research_output;
+			var items_found = Object.keys(ebay_results).length;
+			
+			document.getElementById('search_result').innerHTML = '';
+			
+			
+			for (var i = 0 ; i < items_found ; i++)
+			{
+				var item_name = ebay_results[i]['title']['value']
+				var item_price = ebay_results[i]['sellingStatus']['currentPrice']['value']
+				var item_link = ebay_results[i]['viewItemURL']['value'] 
+				var item_picture = ebay_results[i]['galleryPlusPictureURL']['value'] 
+				
+				document.getElementById('search_result').innerHTML += '<div id="item">';
+				
+				document.getElementById('search_result').innerHTML += '-</br>';
+				document.getElementById('search_result').innerHTML += item_name + '</br>';
+				document.getElementById('search_result').innerHTML += item_price +  '  GBP </br>';
+				//document.getElementById('search_result').innerHTML += item_link + '</br>';
+				document.getElementById('search_result').innerHTML += '<a href="'+item_link+'" target="_blank"><img src="'+item_picture+'" width="400"  alt="" title="" /></a>';
+				
+				document.getElementById('search_result').innerHTML += '</div>'
+			}
+			
+			
+		} 
+	}
+	
+	
+	$(document).ready(function(){
 	  
-		$('#MyButton').click(function(){
+		document.getElementById('search_result').innerHTML = "Serching not started yet";
+		
+		var div = document.getElementById("search_output");
+		div.textContent = "Press button to start voice control";
+		
+		
+	$('#MyButton').click(function(){
 		div.textContent = "Connecting to the server...";
-		   recognize.recognize( displayMessage);
+		get_from_ebay.show_results( displayMessage);
 		});
-	  });
+		
+	
+	});
 	</script>
+	
+
 </head>
 
 
 <body>
         <div id="search_output"></div>
-		
-		<script type="text/javascript">
-			var div = document.getElementById("search_output");
-			div.textContent = "Press button to start voice control";
-			var text = div.textContent;
-		</script>
 		<input type="button" value="Search" id="MyButton" >
+		<div id="search_result"></div>
+
+
 </body>
 </html>
